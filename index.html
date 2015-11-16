@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="make a form with Angularjs ">
+    <meta name="keywords" content="Angular Agnularjs add remove search form ">
+
+	<title>Angularjs add/remove/search item</title>
+	<link rel="stylesheet" type="text/css" href="style.css" >
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<link href='https://fonts.googleapis.com/css?family=Merriweather:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>	
+	<div class="wrapper">
+	<header>
+		<h1>Marvelous!</h1>
+		<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since.</p>
+	</header>
+	<main>
+		<h2>ADD AN ITEM</h2>
+		<div class="columns" ng-app="myApp" ng-controller="myCtrl">
+			
+			<div class="col-left">
+				<!-- Enter item -->
+				<p><input type="text" id="enter" 
+					placeholder="ENTER ITEM" 
+					ng-model="enterItem"></p>
+				<!-- Select column -->
+				 <select ng-model="selectColumn">
+					 <option value="" selected>CHOOSE COLUMN</option>
+					 <option ng-repeat="column in columns" value="{{column}}">{{column}}</option>	
+				</select>
+				<br>
+				<!-- Add item -->
+				<p><input type="button" id="add" value="ADD ITEM" ng-click="addName()" ></p>
+				<!-- Search item -->
+				<p><label for="search">SEARCH AN ITEM</label></p>
+				<p><input type="search" id="search" name="search" placeholder="SEARCH" ng-model="search"></p>
+			</div><!-- end of col-left -->
+			
+			<div class="col-right">
+				<!-- Column 1 -->
+				<div class="column-1">
+					<h3>Column 1</h3>
+					<ul>
+						<li ng-repeat="itemLeft in Leftitems | filter:search track by $index">{{itemLeft}}
+							<button type="button" ng-click="Leftitems.splice($index, 1)" aria-label="Remove">
+								<i class="fa fa-times"></i></button></li>
+					</ul> 
+				</div><!-- end of column-1 -->
+				<!-- Column 2 -->
+				<div class="column-2">
+					<h3>Column 2</h3>
+					<ul>
+						<li ng-repeat="itemRight in Rightitems | filter:search track by $index">{{itemRight}}
+							<button type="button" ng-click="Rightitems.splice($index, 1)" aria-label="Remove">
+								<i class="fa fa-times"></i></button></li>
+					</ul>
+				</div><!-- end of column-2 -->
+			</div><!-- end of col-right -->
+	
+		</div><!-- end of columns -->
+	</main>
+	</div><!-- end of wrapper -->
+<script>
+	var app = angular.module('myApp', []);
+	app.controller('myCtrl', function($scope) {
+		$scope.columns = ['COLUMN 1','COLUMN 2']
+		$scope.Leftitems = ['Apple','Banana','Cherry','Grape','Lemon'];
+		$scope.Rightitems = ['Eggplant','Lettuce','Avocado'];
+		$scope.addName = function(){
+			if($scope.selectColumn == null || $scope.selectColumn == "" || $scope.enterItem == null || $scope.enterItem == ""){
+				
+				if(($scope.enterItem == null || $scope.enterItem == "") && ($scope.selectColumn == null || $scope.selectColumn == "")){
+					alert("Please enter ITEM and choose COLUMN!");
+				} else if($scope.enterItem == null || $scope.enterItem == ""){ 
+					alert("Please enter ITEM!"); 
+				} else{ 
+					alert("Please choose COLUMN!");
+				}
+				
+			} else if($scope.selectColumn=='COLUMN 1' || $scope.selectColumn=='COLUMN 2'){
+				
+				if($scope.selectColumn=='COLUMN 1'){
+					$scope.Leftitems.push($scope.enterItem);
+				}else if($scope.selectColumn=='COLUMN 2'){
+					$scope.Rightitems.push($scope.enterItem);
+				}else{
+					alert('Unexpected ERROR! Please contact system administrator!');
+				}
+					
+			}else{
+			   alert('Unexpected ERROR! Please contact system administrator!');
+		    }
+			
+		};
+	});
+
+
+</script>	
+</body>
+
+	
+</html>
