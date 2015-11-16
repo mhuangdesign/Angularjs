@@ -1,0 +1,489 @@
+/* ----------------------------------------------------------------------------------------------------
+
+Super Form Reset
+
+A couple of things to watch out for:
+
+- IE8: If a text input doesn't have padding on all sides or none the text won't be centered.
+- The default border sizes on text inputs in all UAs seem to be slightly different. You're better off using custom borders.
+- You NEED to set the font-size and family on all form elements
+- Search inputs need to have their appearance reset and the box-sizing set to content-box to match other UAs
+- You can style the upload button in webkit using ::-webkit-file-upload-button
+- ::-webkit-file-upload-button selectors can't be used in the same selector as normal ones. FF and IE freak out.
+- IE: You don't need to fake inline-block with labels and form controls in IE. They function as inline-block.
+- By turning off ::-webkit-search-decoration, it removes the extra whitespace on the left on search inputs
+
+----------------------------------------------------------------------------------------------------*/
+ 
+input,
+label,
+select,
+button,
+textarea
+{
+	margin:0;
+	border:0;
+	padding:0;
+	display:inline-block;
+	vertical-align:middle;
+	white-space:normal;
+	background:none;
+	line-height:1;
+	
+	/* Browsers have different default form fonts */
+	font-size:13px;
+	font-family:Arial;
+}
+ 
+/* Remove the stupid outer glow in Webkit */
+input:focus
+{
+	outline:0;
+}
+ 
+/* Box Sizing Reset
+-----------------------------------------------*/
+ 
+/* All of our custom controls should be what we expect them to be */
+input,
+textarea
+{
+	-webkit-box-sizing:content-box;
+	-moz-box-sizing:content-box;
+	box-sizing:content-box;
+}
+ 
+/* These elements are usually rendered a certain way by the browser */
+button,
+input[type=reset],
+input[type=button],
+input[type=submit],
+input[type=checkbox],
+input[type=radio],
+select
+{
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+}
+ 
+/* Text Inputs
+-----------------------------------------------*/
+ 
+input[type=date],
+input[type=datetime],
+input[type=datetime-local],
+input[type=email],
+input[type=month],
+input[type=number],
+input[type=password],
+input[type=range],
+input[type=search],
+input[type=tel],
+input[type=text],
+input[type=time],
+input[type=url],
+input[type=week]
+{
+}
+ 
+/* Button Controls
+-----------------------------------------------*/
+ 
+input[type=checkbox],
+input[type=radio]
+{
+	width:13px;
+	height:13px;
+}
+ 
+/* File Uploads
+-----------------------------------------------*/
+ 
+ 
+/* Search Input
+-----------------------------------------------*/
+ 
+/* Make webkit render the search input like a normal text field */
+input[type=search]
+{
+	-webkit-appearance:textfield;
+	-webkit-box-sizing:content-box;
+}
+ 
+/* Turn off the recent search for webkit. It adds about 15px padding on the left */
+::-webkit-search-decoration
+{
+	display:none;
+}
+ 
+/* Buttons
+-----------------------------------------------*/
+ 
+button,
+input[type="reset"],
+input[type="button"],
+input[type="submit"]
+{
+	/* Fix IE7 display bug */
+	overflow:visible;
+	width:auto;
+	outline: none;
+}
+ 
+/* IE8 and FF freak out if this rule is within another selector */
+::-webkit-file-upload-button
+{	
+	padding:0;
+	border:0;
+	background:none;
+}
+ 
+/* Textarea
+-----------------------------------------------*/
+ 
+textarea 
+{
+	/* Move the label to the top */
+	vertical-align:top;
+	
+	/* Turn off scroll bars in IE unless needed */
+	overflow:auto;
+}
+ 
+/* Selects
+-----------------------------------------------*/
+ 
+select
+{
+ 
+}
+ 
+select[multiple] 
+{
+	/* Move the label to the top */
+	vertical-align:top;
+}
+
+
+/* appearance
+-----------------------------------------------*/
+
+input,
+textarea {
+	-moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+	border-radius: 0;
+}
+
+
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+/*-----css reset-----*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/*========================================
+###  START
+========================================*/
+
+body{
+	background-color: #79818f;
+	font-family: 'HelveticaNeue','Merriweather', serif;
+	color: white;
+}
+.wrapper{
+	width: 960px;
+	margin: 0 auto;
+	margin-bottom: 100px;
+	overflow: hidden;
+}
+
+
+/*-----header-----*/
+header{
+	margin-bottom: 50px;
+}
+h1{
+	font-size: 50px;
+	font-family:'Merriweather', serif;
+	font-style: italic;
+	line-height: 2;
+}
+header p{
+	font-size: 14px;
+	color: #8fffee;
+	width: 35%;
+    line-height: 1.4;
+	text-align: justify;
+}
+
+
+/*-----main-----*/
+h2{
+	font-size: 20px;
+	line-height: 50px;
+	text-align: center;
+	text-shadow: 0 0 2px #999;
+	margin-bottom: 30px;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e1e9f2+0,818fa2+100&amp;0.6+0,1+0,1+25,1+100 */
+	background: -webkit-linear-gradient(rgba(225,233,242,1) 0%, rgba(201,211,222,1) 25%, rgba(129,143,162,1) 100%);
+	background: -o-linear-gradient(rgba(225,233,242,1) 0%, rgba(201,211,222,1) 25%, rgba(129,143,162,1) 100%);
+	background: linear-gradient(rgba(225,233,242,1) 0%, rgba(201,211,222,1) 25%, rgba(129,143,162,1) 100%); /* FF3.6-15 */ /* Chrome10-25,Safari5.1-6 */ /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e1e9f2', endColorstr='#818fa2',GradientType=0 ); /* IE6-9 */
+
+}
+.columns{
+	text-transform: uppercase;
+}
+.col-left{
+	width: 30%;
+	float: left;
+}
+.col-right{
+	width: 70%;
+	float: left;
+	
+}
+.column-1,
+.column-2{
+	width:50%;
+	float: left;
+}
+
+input,select{
+	border: 2px solid white;
+	padding: 10px;
+	margin-bottom: 30px;
+	background-color: #9ba1ab;
+	color: white;
+	height:42px;
+}
+select{
+	display: block;	
+	width:98%;
+	outline: none;
+	font-size: 12px;
+	
+}
+input[type=search]{
+	height: 32px;
+}
+input[type=button]{
+	cursor: pointer;
+}
+input[type=button]:hover,
+input[type=button]:focus,
+input[type=button]:active{
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#b6bac6+0,3c4154+100 */
+	background: rgb(182,186,198); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(182,186,198,1) 0%, rgba(60,65,84,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  rgba(182,186,198,1) 0%,rgba(60,65,84,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  rgba(182,186,198,1) 0%,rgba(60,65,84,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b6bac6', endColorstr='#3c4154',GradientType=0 ); /* IE6-9 */
+
+}
+input[type=button],
+input[type=text],
+input[type=search],
+select{
+	 -webkit-box-sizing: border-box; /* For legacy WebKit based browsers */
+     -moz-box-sizing: border-box; /* For legacy (Firefox <29) Gecko based browsers */
+     box-sizing: border-box;
+	 width:98%;	  
+}
+label{
+	margin-bottom: 8px;
+	font-size: 12px;
+}
+::-webkit-input-placeholder {
+	color: #bcc0c7;
+	font-size: 12px;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+	color: #bcc0c7;
+	font-size: 12px;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+	color: #bcc0c7; 
+	font-size: 12px;
+}
+
+:-ms-input-placeholder {  
+	color: #bcc0c7;
+	font-size: 12px;
+}
+h3{
+	font-size: 16px;
+	line-height: 40px;
+	text-align: center;
+	text-shadow: 0 0 2px #999;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#b6bac6+0,3c4154+100 */
+	background: rgb(182,186,198); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(182,186,198,1) 0%, rgba(60,65,84,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  rgba(182,186,198,1) 0%,rgba(60,65,84,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  rgba(182,186,198,1) 0%,rgba(60,65,84,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b6bac6', endColorstr='#3c4154',GradientType=0 ); /* IE6-9 */
+
+}
+.column-1{
+	border-right: 2px solid white;
+}
+.column-2{
+	border-left: 2px solid white;
+}
+.col-right{
+	border: 4px solid white;
+}
+ul li{
+	padding: 0 15px; 
+	line-height: 3;
+
+}
+li:nth-of-type(2n+1){
+	background-color: #f2f3f4;
+	color: #79818f;
+}
+li:nth-of-type(2n){
+	background-color: #bcc0c7;
+	color: white;
+}
+li button{
+	float: right;
+}
+li i{
+	border-radius: 8px;
+	padding: 7px 8px;
+	margin-top: 10px;
+	cursor: pointer;
+}
+li:nth-of-type(2n+1) i{
+	border: 1px solid #79818f;
+	color: #79818f;
+}
+li:nth-of-type(2n+1) i:hover,
+li:nth-of-type(2n+1) i:active,
+li:nth-of-type(2n+1) i:focus{
+	background-color: #79818f;
+	color:white;
+}
+li:nth-of-type(2n) i{
+	border: 1px solid white;
+	color: white;
+}
+li:nth-of-type(2n) i:hover,
+li:nth-of-type(2n) i:active,
+li:nth-of-type(2n) i:focus{
+	background-color: white;
+	color: #79818f;
+}
+#searchButton{
+	float: right;
+    position: relative;
+    top: -57px;
+    right: 19px;
+    cursor: pointer;
+	color:white;
+}
+
+@media only screen and (max-width:1000px){
+	.wrapper{
+		width:90%;
+		margin: 0 auto;
+		margin-bottom: 100px;
+	}
+	.col-left,
+	.col-right{
+		width: 100%;
+	}
+	input[type=button],
+	input[type=text],
+	input[type=search],
+	select{
+		width:100%;
+		margin-bottom: 10px;
+	}
+	
+	#searchButton{
+		top:-36px;
+	}
+}
+@media only screen and (max-width: 768px){
+	.column-1,
+	.column-2{
+		width:100%;
+	}
+	.column-1{
+		border-right: none;
+	}
+	.column-2{
+		border-top: 4px solid white;
+		border-left:none;
+	}
+	header p{
+		width:100%;
+	}
+
+}
+
+
+
+
+
+
+
